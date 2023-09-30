@@ -1,14 +1,12 @@
-import validator from '../model/validator/userValidator';
-import UserRepository from '../model/repositories/userRepository';
+import UserRepository from '../model/repositories/UserRepository';
 
 class DeleteUser {
+    private userRepository : UserRepository;
+    constructor(userRepository : UserRepository){
+        this.userRepository = userRepository; 
+    };
     public delete(id: string){
-        const valid = validator.validateId(id);
-        if(valid.status){
-            const userRepository = new UserRepository();
-            userRepository.deleteUser(id);
-        }
-        return valid;
+        return this.userRepository.deleteUser(id);
     }
 }
 export default  DeleteUser;

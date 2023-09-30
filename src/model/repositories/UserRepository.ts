@@ -1,4 +1,4 @@
-import user from '../../entities/user';
+import user from '../../entities/User';
 import Database from '../Database';
 import {ObjectId} from 'mongodb';
 

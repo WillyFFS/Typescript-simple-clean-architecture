@@ -1,10 +1,12 @@
-import UserRepository from '../model/repositories/userRepository';
+import UserRepository from '../model/repositories/UserRepository';
 
 class GetAllUser{
+    private userRepository : UserRepository;
+    constructor(userRepository : UserRepository){
+        this.userRepository = userRepository; 
+    };
     public getAll(){
-        const userRepository = new UserRepository();
-        const data = userRepository.getAllUser();
-        return {status: true, data};
+        return this.userRepository.getAllUser();
     }
 }
 export default GetAllUser;

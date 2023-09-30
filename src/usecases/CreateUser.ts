@@ -1,16 +1,14 @@
-import validator from '../model/validator/userValidator';
-import UserRepository from '../model/repositories/userRepository';
-import User from '../entities/user';
+import UserRepository from '../model/repositories/UserRepository';
+import User from '../entities/User';
 
 class CreateUser{
+    private userRepository : UserRepository;
+    constructor(userRepository : UserRepository){
+        this.userRepository = userRepository; 
+    };
     public create(name: string, address: string){
-        const valid = validator.validateUser(name,address);
-        if(valid.status){
-            const userRepository = new UserRepository();
-            const newUser = new User(name,address);
-            userRepository.addUser(newUser);
-        }
-        return valid;
+        const newUser = new User(name,address);
+        return this.userRepository.addUser(newUser); 
     }
 }
 export default CreateUser;
